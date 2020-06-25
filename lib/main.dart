@@ -11,7 +11,6 @@ import 'full_screenimagepage.dart';
  * 类说明：瀑布流主页逻辑实现
  *
  *
- *
  */
 
 
@@ -68,34 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisCount: 4,
         itemCount: imgList.length,
         itemBuilder: (context, i) {
-          String imgPath = imgList[i];
-          return new Material(
-            elevation: 8.0,
-            borderRadius: new BorderRadius.all(
-              new Radius.circular(8.0),
-            ),
-            child: new InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                    builder: (context) {
-                       return new FullScreenImagePage(imageurl: imgPath);
-                    },
-                  ),
-                );
-              },
-              child: new Hero(
-                tag: imgPath,
-                child: CachedNetworkImage(
-                  imageUrl: imgPath,
-                  fit: BoxFit.fitWidth,
-              /*    placeholder: (context, url) =>
-                      Image.asset('assets/wallfy.png'),*/
-                ),
-              ),
-            ),
-          );
+          return itemWidget(i);
         },
       //  staggeredTileBuilder: (index) => new StaggeredTile.fit(2),
         staggeredTileBuilder: (int index) =>
@@ -105,4 +77,34 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+   Widget  itemWidget(int index){
+     String imgPath = imgList[index];
+     return new Material(
+       elevation: 8.0,
+       borderRadius: new BorderRadius.all(
+         new Radius.circular(8.0),
+       ),
+       child: new InkWell(
+         onTap: () {
+           Navigator.push(
+             context,
+             new MaterialPageRoute(
+               builder: (context) {
+                 return new FullScreenImagePage(imageurl: imgPath);
+               },
+             ),
+           );
+         },
+         child: new Hero(
+           tag: imgPath,
+           child: CachedNetworkImage(
+             imageUrl: imgPath,
+             fit: BoxFit.fitWidth,
+             /*    placeholder: (context, url) =>
+                      Image.asset('assets/wallfy.png'),*/
+           ),
+         ),
+       ),
+     );
+   }
 }
