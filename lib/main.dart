@@ -6,7 +6,9 @@ import 'full_screenimagepage.dart';
 
 
 /**
- *
+ * 创建人：xuqing
+ * 创建时间：2020年6月26日04:00:19
+ * 类说明：瀑布流主页逻辑实现
  *
  *
  *
